@@ -11,6 +11,8 @@
 #import "EKPhotoPreviewController.h"
 #import "EKPhotoPickerController.h"
 #import "EKImageManager.h"
+#import "EKPhotoListViewController.h"
+#import "EKPhotoController.h"
 
 @interface ViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *view1;
@@ -26,9 +28,18 @@
 }
 - (IBAction)picker:(UIButton *)sender {
 
-    EKPhotoPickerController *picker = [EKPhotoPickerController new];
+//    EKPhotoPickerController *picker = [EKPhotoPickerController new];
+//
+//    [self presentViewController:picker animated:YES completion:nil];
     
-    [self presentViewController:picker animated:YES completion:nil];
+//    EKPhotoListViewController *list = [EKPhotoListViewController new];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:list];
+//    [self presentViewController:nav animated:YES completion:nil];
+    EKPhotoController *cont = [EKPhotoController new];
+    cont.selectPhotoOfMax = 5;
+    [cont showIn:self result:^(id responseObject) {
+        
+    }];
 
     
 }

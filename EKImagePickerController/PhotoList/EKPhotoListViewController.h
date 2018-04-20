@@ -9,6 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface EKPhotoListViewController : UIViewController
-@property (assign, nonatomic) NSInteger selectNum;
 @property (strong, nonatomic) void (^photoResult)(id responseObject);
 @end

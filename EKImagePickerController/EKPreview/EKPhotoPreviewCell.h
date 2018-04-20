@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 @interface EKPhotoPreviewCell : UICollectionViewCell
-@property (nonatomic, strong) UIImage *image;
+@property (nonatomic, strong) PHAsset *asset;
 
 @property (nonatomic, copy) void (^singleTapGestureBlock)(void);
 

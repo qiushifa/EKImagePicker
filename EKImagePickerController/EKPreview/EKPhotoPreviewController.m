@@ -40,18 +40,18 @@
 - (void)configCollectionView {
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-    layout.itemSize = CGSizeMake(self.view.ek_width + 20, self.view.ek_height);
+    layout.itemSize = CGSizeMake(self.view.ek_width, self.view.ek_height);
     layout.minimumInteritemSpacing = 0;
     layout.minimumLineSpacing = 0;
-    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(-10, 0, self.view.ek_width + 20, self.view.ek_height) collectionViewLayout:layout];
+    _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.ek_width , self.view.ek_height) collectionViewLayout:layout];
     _collectionView.backgroundColor = [UIColor blackColor];
     _collectionView.dataSource = self;
     _collectionView.delegate = self;
     _collectionView.pagingEnabled = YES;
     _collectionView.scrollsToTop = NO;
     _collectionView.showsHorizontalScrollIndicator = NO;
-    _collectionView.contentOffset = CGPointMake(0, 0);
-    _collectionView.contentSize = CGSizeMake(self.photos.count * (self.view.ek_width + 20), 0);
+    _collectionView.contentOffset = CGPointMake(self.view.ek_width * _index, 0);
+    _collectionView.contentSize = CGSizeMake(self.photos.count * (self.view.ek_width), 0);
     [self.view addSubview:_collectionView];
     
     [_collectionView registerClass:[EKPhotoPreviewCell class] forCellWithReuseIdentifier:@"EKPhotoPreviewCell"];
@@ -87,7 +87,7 @@
 }
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     EKPhotoPreviewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EKPhotoPreviewCell" forIndexPath:indexPath];
-    cell.image = _photos[indexPath.row];
+    cell.asset = _photos[indexPath.row];
     
     if (!cell.singleTapGestureBlock) {
         __weak typeof(_toolBar) weakToolBar = _toolBar;

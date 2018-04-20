@@ -10,13 +10,16 @@
 #import "UIView+EKValue.h"
 #import "EKAssetCell.h"
 #import "EKImageManager.h"
+#import "EKPreview/EKPhotoPreviewController.h"
+
 
 @interface EKPhotoPickerController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) UIButton *previewBtn;
 @property (nonatomic, strong) UIButton *doneButton;
 @property (nonatomic, strong) UIView *toolBar;
-@property (nonatomic, strong) NSMutableArray *dataArr; // 照片数组
+@property (nonatomic, strong) NSMutableArray *dataArr; // 所有照片数组
+@property (nonatomic, strong) NSMutableArray *selectedPhotoArr; // 已选的照片数组
 @end
 
 @implementation EKPhotoPickerController
@@ -33,16 +36,12 @@
     [super viewWillAppear:animated];
     [self scrollCollectionViewToBottom];
 }
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    if (self.backButtonClickHandle) {
-//        self.backButtonClickHandle(_model);
-//    }
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationItem.title = _model.name;
+    self.navigationItem.title = self.titleStr;
+    
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonClick)];
     
     [self configCollectionView];
@@ -54,15 +53,16 @@
 
 
 - (void)getAllPhotos{
-
-    PHFetchResult *result = [[EKImageManager manager] getCameraRollFetchResult];
+    PHFetchResult *result = self.fetch ? self.fetch : [[EKImageManager manager] getCameraRollFetchResult];
     NSArray *arr = [[EKImageManager manager] getPhotoAssets:result assetType:PHAssetMediaTypeImage];
-    
-    for (PHAsset *asset in arr) {
-        EKAssetModel *model = [EKAssetModel new];
-        model.asset = asset;
-        [self.dataArr addObject:model];
-    }
+//    for (PHAsset *item in arr) {
+//        EKAsset *model = (EKAsset *)[PHAsset new];
+//        model.selected = NO;
+//        [self.dataArr addObject:model];
+//        
+//    }
+    [self.dataArr addObjectsFromArray:arr];
+
     [self.collectionView reloadData];
     
 }
@@ -105,9 +105,18 @@
     [_doneButton addTarget:self action:@selector(doneButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_doneButton setTitle:@"完成" forState:UIControlStateNormal];
     [_doneButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [_doneButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
     [_toolBar addSubview:_doneButton];
     
     [self.view addSubview:_toolBar];
+    
+    if (self.selectedPhotoArr.count < 1) {
+        self.previewBtn.enabled = NO;
+        self.doneButton.enabled = NO;
+    }else{
+        self.previewBtn.enabled = YES;
+        self.doneButton.enabled = YES;
+    }
     
 }
 
@@ -123,8 +132,11 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-
- 
+    [collectionView deselectItemAtIndexPath:indexPath animated:YES];
+    
+    EKPhotoPreviewController *preview = [[EKPhotoPreviewController alloc] initWithPhotos:self.dataArr atIndex:indexPath.row];
+    [self.navigationController pushViewController:preview animated:YES];
+    
    
 }
 
@@ -139,11 +151,15 @@
 
 // 完成按钮
 - (void)doneButtonClick{
+    if (self.selectedPhotos) {
+        self.selectedPhotos(self.selectedPhotoArr);
+    }
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 // 预览按钮
 - (void)previewButtonClick{
-    
+    EKPhotoPreviewController *preview = [[EKPhotoPreviewController alloc] initWithPhotos:self.selectedPhotoArr atIndex:0];
+    [self.navigationController pushViewController:preview animated:YES];
 }
 // 取消按钮
 - (void)cancelButtonClick{
@@ -156,7 +172,12 @@
     }
     return _dataArr;
 }
-
+- (NSMutableArray *)selectedPhotoArr{
+    if (_selectedPhotoArr) {
+        _selectedPhotoArr = [NSMutableArray array];
+    }
+    return _selectedPhotoArr;
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

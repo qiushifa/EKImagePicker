@@ -8,7 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		FD74247A20889F360035982F /* EKPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD74247920889F360035982F /* EKPhotoListViewController.m */; };
-		FD74247C2088A19C0035982F /* EKImages.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD74247B2088A19C0035982F /* EKImages.bundle */; };
+		FD74247F2089C1A40035982F /* EKPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD74247E2089C1A40035982F /* EKPhotoListCell.m */; };
+		FD7424892089CFED0035982F /* EKPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7424882089CFED0035982F /* EKPhotoController.m */; };
+		FD74248F2089D8400035982F /* rightCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248B2089D8400035982F /* rightCell.png */; };
+		FD7424902089D8400035982F /* select_no.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248C2089D8400035982F /* select_no.png */; };
+		FD7424912089D8400035982F /* no_data.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248D2089D8400035982F /* no_data.png */; };
+		FD7424922089D8400035982F /* select_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248E2089D8400035982F /* select_yes.png */; };
+		FD74249A2089F28C0035982F /* EKAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7424992089F28C0035982F /* EKAsset.m */; };
 		FD7555812085CF3C00AFD90C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7555802085CF3C00AFD90C /* AppDelegate.m */; };
 		FD7555842085CF3C00AFD90C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7555832085CF3C00AFD90C /* ViewController.m */; };
 		FD7555872085CF3C00AFD90C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD7555852085CF3C00AFD90C /* Main.storyboard */; };
@@ -31,7 +37,16 @@
 /* Begin PBXFileReference section */
 		FD74247820889F360035982F /* EKPhotoListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKPhotoListViewController.h; sourceTree = "<group>"; };
 		FD74247920889F360035982F /* EKPhotoListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKPhotoListViewController.m; sourceTree = "<group>"; };
-		FD74247B2088A19C0035982F /* EKImages.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EKImages.bundle; sourceTree = "<group>"; };
+		FD74247D2089C1A40035982F /* EKPhotoListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKPhotoListCell.h; sourceTree = "<group>"; };
+		FD74247E2089C1A40035982F /* EKPhotoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKPhotoListCell.m; sourceTree = "<group>"; };
+		FD7424872089CFED0035982F /* EKPhotoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKPhotoController.h; sourceTree = "<group>"; };
+		FD7424882089CFED0035982F /* EKPhotoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKPhotoController.m; sourceTree = "<group>"; };
+		FD74248B2089D8400035982F /* rightCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightCell.png; sourceTree = "<group>"; };
+		FD74248C2089D8400035982F /* select_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_no.png; sourceTree = "<group>"; };
+		FD74248D2089D8400035982F /* no_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_data.png; sourceTree = "<group>"; };
+		FD74248E2089D8400035982F /* select_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_yes.png; sourceTree = "<group>"; };
+		FD7424982089F28C0035982F /* EKAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKAsset.h; sourceTree = "<group>"; };
+		FD7424992089F28C0035982F /* EKAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKAsset.m; sourceTree = "<group>"; };
 		FD75557C2085CF3C00AFD90C /* EKImagePickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EKImagePickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD75557F2085CF3C00AFD90C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD7555802085CF3C00AFD90C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -75,6 +90,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FD7424932089D8E00035982F /* PhotoList */ = {
+			isa = PBXGroup;
+			children = (
+				FD74247820889F360035982F /* EKPhotoListViewController.h */,
+				FD74247920889F360035982F /* EKPhotoListViewController.m */,
+				FD74247D2089C1A40035982F /* EKPhotoListCell.h */,
+				FD74247E2089C1A40035982F /* EKPhotoListCell.m */,
+			);
+			path = PhotoList;
+			sourceTree = "<group>";
+		};
+		FD7424942089D9030035982F /* Categoty */ = {
+			isa = PBXGroup;
+			children = (
+				FD7555982085D05000AFD90C /* UIView+EKValue.h */,
+				FD7555992085D05100AFD90C /* UIView+EKValue.m */,
+				FD7556C2208729B900AFD90C /* UIImage+EKFixOrientation.h */,
+				FD7556C3208729B900AFD90C /* UIImage+EKFixOrientation.m */,
+				FD7424982089F28C0035982F /* EKAsset.h */,
+				FD7424992089F28C0035982F /* EKAsset.m */,
+			);
+			path = Categoty;
+			sourceTree = "<group>";
+		};
 		FD7555732085CF3C00AFD90C = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +133,16 @@
 		FD75557E2085CF3C00AFD90C /* EKImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
+				FD7556A92086EAF100AFD90C /* EKPreview */,
+				FD7424942089D9030035982F /* Categoty */,
+				FD7424932089D8E00035982F /* PhotoList */,
+				FD74248D2089D8400035982F /* no_data.png */,
+				FD74248B2089D8400035982F /* rightCell.png */,
+				FD74248C2089D8400035982F /* select_no.png */,
+				FD74248E2089D8400035982F /* select_yes.png */,
 				FD7556B5208713CA00AFD90C /* EKAlbum */,
 				FD7556B12086F57700AFD90C /* 00.JPG */,
 				FD7556B02086F57700AFD90C /* 01.JPG */,
-				FD7556A92086EAF100AFD90C /* EKPreview */,
 				FD75557F2085CF3C00AFD90C /* AppDelegate.h */,
 				FD7555802085CF3C00AFD90C /* AppDelegate.m */,
 				FD7555822085CF3C00AFD90C /* ViewController.h */,
@@ -107,19 +152,14 @@
 				FD75558A2085CF3D00AFD90C /* LaunchScreen.storyboard */,
 				FD75558D2085CF3D00AFD90C /* Info.plist */,
 				FD75558E2085CF3D00AFD90C /* main.m */,
-				FD7555982085D05000AFD90C /* UIView+EKValue.h */,
-				FD7555992085D05100AFD90C /* UIView+EKValue.m */,
 				FD7556BC2087196200AFD90C /* EKPhotoPickerController.h */,
 				FD7556BD2087196200AFD90C /* EKPhotoPickerController.m */,
-				FD74247820889F360035982F /* EKPhotoListViewController.h */,
-				FD74247920889F360035982F /* EKPhotoListViewController.m */,
 				FD7556BF20871FB700AFD90C /* EKAssetCell.h */,
 				FD7556C020871FB700AFD90C /* EKAssetCell.m */,
-				FD7556C2208729B900AFD90C /* UIImage+EKFixOrientation.h */,
-				FD7556C3208729B900AFD90C /* UIImage+EKFixOrientation.m */,
 				FD7556C52087418A00AFD90C /* EKImageManager.h */,
 				FD7556C62087418A00AFD90C /* EKImageManager.m */,
-				FD74247B2088A19C0035982F /* EKImages.bundle */,
+				FD7424872089CFED0035982F /* EKPhotoController.h */,
+				FD7424882089CFED0035982F /* EKPhotoController.m */,
 			);
 			path = EKImagePickerController;
 			sourceTree = "<group>";
@@ -204,12 +244,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD7424902089D8400035982F /* select_no.png in Resources */,
 				FD75558C2085CF3D00AFD90C /* LaunchScreen.storyboard in Resources */,
+				FD7424922089D8400035982F /* select_yes.png in Resources */,
 				FD7555892085CF3D00AFD90C /* Assets.xcassets in Resources */,
+				FD74248F2089D8400035982F /* rightCell.png in Resources */,
+				FD7424912089D8400035982F /* no_data.png in Resources */,
 				FD7555872085CF3C00AFD90C /* Main.storyboard in Resources */,
 				FD7556B32086F57700AFD90C /* 00.JPG in Resources */,
 				FD7556B22086F57700AFD90C /* 01.JPG in Resources */,
-				FD74247C2088A19C0035982F /* EKImages.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,12 +263,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD7424892089CFED0035982F /* EKPhotoController.m in Sources */,
 				FD7556C120871FB700AFD90C /* EKAssetCell.m in Sources */,
 				FD7556AC2086EB3900AFD90C /* EKPhotoPreviewController.m in Sources */,
 				FD7556BE2087196200AFD90C /* EKPhotoPickerController.m in Sources */,
 				FD7556AF2086EF2700AFD90C /* EKPhotoPreviewCell.m in Sources */,
 				FD7555842085CF3C00AFD90C /* ViewController.m in Sources */,
 				FD75558F2085CF3D00AFD90C /* main.m in Sources */,
+				FD74249A2089F28C0035982F /* EKAsset.m in Sources */,
+				FD74247F2089C1A40035982F /* EKPhotoListCell.m in Sources */,
 				FD7555812085CF3C00AFD90C /* AppDelegate.m in Sources */,
 				FD7556C72087418A00AFD90C /* EKImageManager.m in Sources */,
 				FD7556B82087166400AFD90C /* EKAlbumModel.m in Sources */,

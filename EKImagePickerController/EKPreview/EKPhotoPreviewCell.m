@@ -8,6 +8,7 @@
 
 #import "EKPhotoPreviewCell.h"
 #import "UIView+EKValue.h"
+#import "EKImageManager.h"
 
 @interface EKPhotoPreviewCell()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIImageView *imageView;
@@ -17,6 +18,19 @@
 @end
 
 @implementation EKPhotoPreviewCell
+
+- (void)setAsset:(PHAsset *)asset{
+    [_scrollView setZoomScale:1.0 animated:NO];
+    if (asset.mediaType == PHAssetMediaTypeImage) {
+        __block UIImage *img = [UIImage imageNamed:@""];
+        [[EKImageManager manager] getImageObject:asset complection:^(UIImage *image, BOOL isDegraded) {
+            img = image;
+        }];
+        self.imageView.image = img;
+    }
+    
+    
+}
 
 - (void)setImage:(UIImage *)image{
     [_scrollView setZoomScale:1.0 animated:NO];

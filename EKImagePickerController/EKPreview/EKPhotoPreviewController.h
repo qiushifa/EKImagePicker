@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Photos/Photos.h>
 
 @interface EKPhotoPreviewController : UIViewController
 
@@ -16,7 +17,7 @@
  @param index 展示的图片位置
  
  */
-- (instancetype)initWithPhotos:(NSArray *)photos atIndex:(NSUInteger)index;
+- (instancetype)initWithPhotos:(NSArray<PHAsset *> *)photos atIndex:(NSUInteger)index;
 
 /**
  * 点击底部完成按钮回调

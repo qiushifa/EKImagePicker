@@ -7,14 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "EKAssetModel.h"
 #import <Photos/Photos.h>
+#import "EKAsset.h"
 
 @interface EKAssetCell : UICollectionViewCell
-@property (nonatomic, strong) EKAssetModel *model;
-@property (nonatomic, assign) EKAssetModelMediaType type;
 
-@property (nonatomic, assign) BOOL showSelectBtn;
-
+@property (nonatomic, strong) PHAsset *model;
+//@property (nonatomic, assign) EKAssetModelMediaType type;
+@property (nonatomic, copy) void (^selectBlock)(PHAsset *asset);
 
 @end

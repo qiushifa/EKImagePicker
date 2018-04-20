@@ -14,6 +14,7 @@
 
 @interface EKAssetCell()
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIButton *selectBtn;
 @end
 
 
@@ -33,23 +34,37 @@
     _imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:_imageView];
     
-//    CGFloat btnSize = photoSize / 4;
-//    _selectBtn = [[UIButton alloc]initWithFrame:CGRectMake(photoSize - btnSize - 5, 5, btnSize, btnSize)];
-//    [self.contentView addSubview:_selectBtn];
+    CGFloat btnSize = self.ek_width / 5;
+    _selectBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.ek_width - btnSize, 0, btnSize, btnSize)];
+    [_selectBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [_selectBtn setImage:[UIImage imageNamed:@"select_yes"] forState:UIControlStateNormal];
+    [self.contentView insertSubview:_selectBtn aboveSubview:_imageView];
 }
 
-- (void)setModel:(EKAssetModel *)model {
-    if (model.asset.mediaType == PHAssetMediaTypeImage) {
+- (void)setModel:(PHAsset *)model {
+    if (model.mediaType == PHAssetMediaTypeImage) {
         __block UIImage *img = [UIImage imageNamed:@""];
-        [[EKImageManager manager] getImageObject:model.asset complection:^(UIImage *image, BOOL isDegraded) {
+        [[EKImageManager manager] getImageObject:model complection:^(UIImage *image, BOOL isDegraded) {
             img = image;
         }];
         self.imageView.image = img;
     }
     [self.contentView addSubview:self.imageView];
     
+    
+    
+//    if (!model.selected) {
+//        [_selectBtn setImage:[UIImage imageNamed:@"select_no"] forState:UIControlStateNormal];
+//    }else{
+//        [_selectBtn setImage:[UIImage imageNamed:@"select_yes"] forState:UIControlStateNormal];
+//    }
+    
 }
-
+- (void)btnPressed:(id)sender{
+    
+    self.selectBlock(self.model);
+    
+}
 
 - (UIImageView *)imageView {
     if (_imageView == nil) {
