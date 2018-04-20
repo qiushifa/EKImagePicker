@@ -7,8 +7,14 @@
 //
 
 #import "ViewController.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "EKPhotoPreviewController.h"
+#import "EKPhotoPickerController.h"
+#import "EKImageManager.h"
 
-@interface ViewController ()
+@interface ViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@property (weak, nonatomic) IBOutlet UIImageView *view1;
+@property (weak, nonatomic) IBOutlet UIImageView *view2;
 
 @end
 
@@ -18,6 +24,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 }
+- (IBAction)picker:(UIButton *)sender {
+
+    EKPhotoPickerController *picker = [EKPhotoPickerController new];
+    
+    [self presentViewController:picker animated:YES completion:nil];
+
+    
+}
+
+
 
 
 - (void)didReceiveMemoryWarning {
