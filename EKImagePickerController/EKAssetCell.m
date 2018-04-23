@@ -14,7 +14,7 @@
 
 @interface EKAssetCell()
 @property (nonatomic, strong) UIImageView *imageView;
-@property (nonatomic, strong) UIButton *selectBtn;
+
 @end
 
 
@@ -33,51 +33,30 @@
     _imageView.layer.masksToBounds = YES;
     _imageView.contentMode = UIViewContentModeScaleAspectFill;
     [self.contentView addSubview:_imageView];
-    
-    CGFloat btnSize = self.ek_width / 5;
-    _selectBtn = [[UIButton alloc]initWithFrame:CGRectMake(self.ek_width - btnSize, 0, btnSize, btnSize)];
-    [_selectBtn addTarget:self action:@selector(btnPressed:) forControlEvents:UIControlEventTouchUpInside];
-    [_selectBtn setImage:[UIImage imageNamed:@"select_yes"] forState:UIControlStateNormal];
-    [self.contentView insertSubview:_selectBtn aboveSubview:_imageView];
+
+    CGFloat btnSize = self.ek_width / 4;
+    self.selectBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    _selectBtn.frame = CGRectMake(self.ek_width - btnSize, 0, btnSize, btnSize);
+    [self.contentView addSubview:_selectBtn];
 }
 
-- (void)setModel:(PHAsset *)model {
-    if (model.mediaType == PHAssetMediaTypeImage) {
-        __block UIImage *img = [UIImage imageNamed:@""];
-        [[EKImageManager manager] getImageObject:model complection:^(UIImage *image, BOOL isDegraded) {
-            img = image;
+-(void)selectBtnStage:(NSMutableArray *)selectArray existence:(PHAsset *)assetItem{
+    if ([selectArray containsObject:assetItem]) {
+        [_selectBtn setImage:[UIImage imageNamed:@"select_yes"] forState:UIControlStateNormal];
+    }else{
+        [_selectBtn setImage:[UIImage imageNamed:@"select_no"] forState:UIControlStateNormal];
+    }
+}
+
+-(void)loadPhotoData:(PHAsset *)assetItem{
+    if ([assetItem isKindOfClass:[PHAsset class]]) {
+        PHAsset *phAsset = assetItem;
+        PHImageRequestOptions *options = [PHImageRequestOptions new];
+        [[PHImageManager defaultManager]requestImageForAsset:phAsset targetSize:CGSizeMake(self.ek_width, self.ek_width) contentMode:PHImageContentModeAspectFit options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+            self.imageView.image = result;
         }];
-        self.imageView.image = img;
     }
-    [self.contentView addSubview:self.imageView];
-    
-    
-    
-//    if (!model.selected) {
-//        [_selectBtn setImage:[UIImage imageNamed:@"select_no"] forState:UIControlStateNormal];
-//    }else{
-//        [_selectBtn setImage:[UIImage imageNamed:@"select_yes"] forState:UIControlStateNormal];
-//    }
-    
 }
-- (void)btnPressed:(id)sender{
-    
-    self.selectBlock(self.model);
-    
-}
-
-- (UIImageView *)imageView {
-    if (_imageView == nil) {
-        UIImageView *imageView = [[UIImageView alloc] init];
-        imageView.frame = CGRectMake(0, 0, self.ek_width, self.ek_height);
-        imageView.contentMode = UIViewContentModeScaleAspectFill;
-        imageView.clipsToBounds = YES;
-        [self.contentView addSubview:imageView];
-        _imageView = imageView;
-    }
-    return _imageView;
-}
-                                                                           
-                                       
+                                    
                                        
 @end

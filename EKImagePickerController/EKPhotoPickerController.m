@@ -29,6 +29,7 @@
         _columnNumber = 4;
         _margin = 5;
         _scrollBottom = YES;
+        
     }
     return  self;
 }
@@ -43,7 +44,7 @@
     self.navigationItem.title = self.titleStr;
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(cancelButtonClick)];
-    
+    self.selectedPhotoArr = [NSMutableArray array];
     [self configCollectionView];
     [self configBottomToolBar];
     [self getAllPhotos];
@@ -74,7 +75,7 @@
     layout.minimumInteritemSpacing = _margin;
     layout.minimumLineSpacing = _margin;
     
-    CGFloat top = 64;
+    CGFloat top = 0;
     _collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, top, self.view.ek_width, self.view.ek_height - top - 50) collectionViewLayout:layout];
     _collectionView.backgroundColor = [UIColor whiteColor];
     _collectionView.dataSource = self;
@@ -92,6 +93,7 @@
     
     self.previewBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     _previewBtn.frame = CGRectMake(10, 3, 80, 44);
+    _previewBtn.enabled = NO;
     [_previewBtn addTarget:self action:@selector(previewButtonClick) forControlEvents:UIControlEventTouchUpInside];
     _previewBtn.titleLabel.font = [UIFont systemFontOfSize:16];
     [_previewBtn setTitle:@"预览" forState:UIControlStateNormal];
@@ -101,6 +103,7 @@
     
     self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
     _doneButton.frame = CGRectMake(self.view.ek_width - 44 - 12, 3, 44, 44);
+    _doneButton.enabled = NO;
     _doneButton.titleLabel.font = [UIFont systemFontOfSize:16];
     [_doneButton addTarget:self action:@selector(doneButtonClick) forControlEvents:UIControlEventTouchUpInside];
     [_doneButton setTitle:@"完成" forState:UIControlStateNormal];
@@ -109,14 +112,6 @@
     [_toolBar addSubview:_doneButton];
     
     [self.view addSubview:_toolBar];
-    
-    if (self.selectedPhotoArr.count < 1) {
-        self.previewBtn.enabled = NO;
-        self.doneButton.enabled = NO;
-    }else{
-        self.previewBtn.enabled = YES;
-        self.doneButton.enabled = YES;
-    }
     
 }
 
@@ -127,17 +122,52 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     EKAssetCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EKAssetCell" forIndexPath:indexPath];
-    cell.model = _dataArr[indexPath.row];
+    cell.selectBtn.tag = indexPath.row;
+    [cell.selectBtn addTarget:self action:@selector(selectPicBtn:) forControlEvents:UIControlEventTouchUpInside];
+    [cell loadPhotoData:[self.dataArr objectAtIndex:indexPath.row]];
+    [cell selectBtnStage:self.selectedPhotoArr existence:[self.dataArr objectAtIndex:indexPath.row]];
     return cell;
 }
 
+#pragma mark -  选中的在数组中添加，取消的从数组中减少
+-(void)selectPicBtn:(UIButton *)button{
+    NSInteger index = button.tag;
+    if (button.selected == NO) {
+        self.previewBtn.enabled = YES;
+        self.doneButton.enabled = YES;
+        if (self.selectedPhotoArr.count + 1 > _maxCount) {
+            [self showSelectPhotoAlertView:_maxCount];
+        }else{
+            [self.selectedPhotoArr addObject:[self.dataArr objectAtIndex:index]];
+            [button setImage:[UIImage imageNamed:@"select_yes"] forState:UIControlStateNormal];
+            button.selected = YES;
+        }
+    }else{
+        if (self.selectedPhotoArr.count - 1 < 1) {
+            self.previewBtn.enabled = NO;
+            self.doneButton.enabled = NO;
+        }
+
+        [self.selectedPhotoArr removeObject:[self.dataArr objectAtIndex:index]];
+        [button setImage:[UIImage imageNamed:@"select_no"] forState:UIControlStateNormal];
+        button.selected = NO;
+    }
+}
+-(void)showSelectPhotoAlertView:(NSInteger)photoNumOfMax {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提醒" message:[NSString stringWithFormat:@"最多只能选择%ld张图片",(long)photoNumOfMax]preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+        
+    }];
+    
+    [alert addAction:action1];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     [collectionView deselectItemAtIndexPath:indexPath animated:YES];
-    
     EKPhotoPreviewController *preview = [[EKPhotoPreviewController alloc] initWithPhotos:self.dataArr atIndex:indexPath.row];
     [self.navigationController pushViewController:preview animated:YES];
     
-   
 }
 
 #pragma mark - 滚动到底部
@@ -172,12 +202,7 @@
     }
     return _dataArr;
 }
-- (NSMutableArray *)selectedPhotoArr{
-    if (_selectedPhotoArr) {
-        _selectedPhotoArr = [NSMutableArray array];
-    }
-    return _selectedPhotoArr;
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -11,9 +11,9 @@
 #import "EKAsset.h"
 
 @interface EKAssetCell : UICollectionViewCell
-
-@property (nonatomic, strong) PHAsset *model;
-//@property (nonatomic, assign) EKAssetModelMediaType type;
-@property (nonatomic, copy) void (^selectBlock)(PHAsset *asset);
+@property (nonatomic, strong) UIButton *selectBtn;
+//@property (nonatomic, strong) PHAsset *model;
+-(void)loadPhotoData:(PHAsset *)assetItem;
+-(void)selectBtnStage:(NSMutableArray *)selectArray existence:(PHAsset *)assetItem;
 
 @end

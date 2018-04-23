@@ -10,11 +10,19 @@
 		FD74247A20889F360035982F /* EKPhotoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD74247920889F360035982F /* EKPhotoListViewController.m */; };
 		FD74247F2089C1A40035982F /* EKPhotoListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD74247E2089C1A40035982F /* EKPhotoListCell.m */; };
 		FD7424892089CFED0035982F /* EKPhotoController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7424882089CFED0035982F /* EKPhotoController.m */; };
-		FD74248F2089D8400035982F /* rightCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248B2089D8400035982F /* rightCell.png */; };
-		FD7424902089D8400035982F /* select_no.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248C2089D8400035982F /* select_no.png */; };
-		FD7424912089D8400035982F /* no_data.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248D2089D8400035982F /* no_data.png */; };
-		FD7424922089D8400035982F /* select_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = FD74248E2089D8400035982F /* select_yes.png */; };
 		FD74249A2089F28C0035982F /* EKAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7424992089F28C0035982F /* EKAsset.m */; };
+		FD74249D208D91510035982F /* EKImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = FD74249C208D91510035982F /* EKImageView.m */; };
+		FD7424A0208DB2DC0035982F /* EKCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FD74249E208DB2DB0035982F /* EKCollectionViewCell.m */; };
+		FD7424A2208DB8730035982F /* EKImageView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = FD7424A1208DB8730035982F /* EKImageView.bundle */; };
+		FD7424AD208DB91D0035982F /* add_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424A4208DB91C0035982F /* add_camera@2x.png */; };
+		FD7424AE208DB91D0035982F /* select_no.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424A5208DB91C0035982F /* select_no.png */; };
+		FD7424AF208DB91D0035982F /* rightCell.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424A6208DB91C0035982F /* rightCell.png */; };
+		FD7424B0208DB91D0035982F /* nookDeleteBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424A7208DB91C0035982F /* nookDeleteBtn@2x.png */; };
+		FD7424B1208DB91D0035982F /* nookDeleteBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424A8208DB91D0035982F /* nookDeleteBtn@3x.png */; };
+		FD7424B2208DB91D0035982F /* nookDeleteBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424A9208DB91D0035982F /* nookDeleteBtn.png */; };
+		FD7424B3208DB91D0035982F /* select_yes.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424AA208DB91D0035982F /* select_yes.png */; };
+		FD7424B4208DB91D0035982F /* add_camera@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424AB208DB91D0035982F /* add_camera@3x.png */; };
+		FD7424B5208DB91D0035982F /* no_data.png in Resources */ = {isa = PBXBuildFile; fileRef = FD7424AC208DB91D0035982F /* no_data.png */; };
 		FD7555812085CF3C00AFD90C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7555802085CF3C00AFD90C /* AppDelegate.m */; };
 		FD7555842085CF3C00AFD90C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FD7555832085CF3C00AFD90C /* ViewController.m */; };
 		FD7555872085CF3C00AFD90C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD7555852085CF3C00AFD90C /* Main.storyboard */; };
@@ -41,12 +49,22 @@
 		FD74247E2089C1A40035982F /* EKPhotoListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKPhotoListCell.m; sourceTree = "<group>"; };
 		FD7424872089CFED0035982F /* EKPhotoController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKPhotoController.h; sourceTree = "<group>"; };
 		FD7424882089CFED0035982F /* EKPhotoController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKPhotoController.m; sourceTree = "<group>"; };
-		FD74248B2089D8400035982F /* rightCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightCell.png; sourceTree = "<group>"; };
-		FD74248C2089D8400035982F /* select_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_no.png; sourceTree = "<group>"; };
-		FD74248D2089D8400035982F /* no_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_data.png; sourceTree = "<group>"; };
-		FD74248E2089D8400035982F /* select_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_yes.png; sourceTree = "<group>"; };
 		FD7424982089F28C0035982F /* EKAsset.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKAsset.h; sourceTree = "<group>"; };
 		FD7424992089F28C0035982F /* EKAsset.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKAsset.m; sourceTree = "<group>"; };
+		FD74249B208D91510035982F /* EKImageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EKImageView.h; sourceTree = "<group>"; };
+		FD74249C208D91510035982F /* EKImageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EKImageView.m; sourceTree = "<group>"; };
+		FD74249E208DB2DB0035982F /* EKCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EKCollectionViewCell.m; sourceTree = "<group>"; };
+		FD74249F208DB2DB0035982F /* EKCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EKCollectionViewCell.h; sourceTree = "<group>"; };
+		FD7424A1208DB8730035982F /* EKImageView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = EKImageView.bundle; sourceTree = "<group>"; };
+		FD7424A4208DB91C0035982F /* add_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_camera@2x.png"; sourceTree = "<group>"; };
+		FD7424A5208DB91C0035982F /* select_no.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_no.png; sourceTree = "<group>"; };
+		FD7424A6208DB91C0035982F /* rightCell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rightCell.png; sourceTree = "<group>"; };
+		FD7424A7208DB91C0035982F /* nookDeleteBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nookDeleteBtn@2x.png"; sourceTree = "<group>"; };
+		FD7424A8208DB91D0035982F /* nookDeleteBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nookDeleteBtn@3x.png"; sourceTree = "<group>"; };
+		FD7424A9208DB91D0035982F /* nookDeleteBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nookDeleteBtn.png; sourceTree = "<group>"; };
+		FD7424AA208DB91D0035982F /* select_yes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = select_yes.png; sourceTree = "<group>"; };
+		FD7424AB208DB91D0035982F /* add_camera@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add_camera@3x.png"; sourceTree = "<group>"; };
+		FD7424AC208DB91D0035982F /* no_data.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = no_data.png; sourceTree = "<group>"; };
 		FD75557C2085CF3C00AFD90C /* EKImagePickerController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EKImagePickerController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FD75557F2085CF3C00AFD90C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FD7555802085CF3C00AFD90C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -114,6 +132,22 @@
 			path = Categoty;
 			sourceTree = "<group>";
 		};
+		FD7424A3208DB90A0035982F /* images */ = {
+			isa = PBXGroup;
+			children = (
+				FD7424A4208DB91C0035982F /* add_camera@2x.png */,
+				FD7424AB208DB91D0035982F /* add_camera@3x.png */,
+				FD7424AC208DB91D0035982F /* no_data.png */,
+				FD7424A9208DB91D0035982F /* nookDeleteBtn.png */,
+				FD7424A7208DB91C0035982F /* nookDeleteBtn@2x.png */,
+				FD7424A8208DB91D0035982F /* nookDeleteBtn@3x.png */,
+				FD7424A6208DB91C0035982F /* rightCell.png */,
+				FD7424A5208DB91C0035982F /* select_no.png */,
+				FD7424AA208DB91D0035982F /* select_yes.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		FD7555732085CF3C00AFD90C = {
 			isa = PBXGroup;
 			children = (
@@ -133,13 +167,10 @@
 		FD75557E2085CF3C00AFD90C /* EKImagePickerController */ = {
 			isa = PBXGroup;
 			children = (
+				FD7424A3208DB90A0035982F /* images */,
 				FD7556A92086EAF100AFD90C /* EKPreview */,
 				FD7424942089D9030035982F /* Categoty */,
 				FD7424932089D8E00035982F /* PhotoList */,
-				FD74248D2089D8400035982F /* no_data.png */,
-				FD74248B2089D8400035982F /* rightCell.png */,
-				FD74248C2089D8400035982F /* select_no.png */,
-				FD74248E2089D8400035982F /* select_yes.png */,
 				FD7556B5208713CA00AFD90C /* EKAlbum */,
 				FD7556B12086F57700AFD90C /* 00.JPG */,
 				FD7556B02086F57700AFD90C /* 01.JPG */,
@@ -160,6 +191,11 @@
 				FD7556C62087418A00AFD90C /* EKImageManager.m */,
 				FD7424872089CFED0035982F /* EKPhotoController.h */,
 				FD7424882089CFED0035982F /* EKPhotoController.m */,
+				FD74249B208D91510035982F /* EKImageView.h */,
+				FD74249C208D91510035982F /* EKImageView.m */,
+				FD74249F208DB2DB0035982F /* EKCollectionViewCell.h */,
+				FD74249E208DB2DB0035982F /* EKCollectionViewCell.m */,
+				FD7424A1208DB8730035982F /* EKImageView.bundle */,
 			);
 			path = EKImagePickerController;
 			sourceTree = "<group>";
@@ -244,15 +280,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD7424902089D8400035982F /* select_no.png in Resources */,
+				FD7424AD208DB91D0035982F /* add_camera@2x.png in Resources */,
+				FD7424A2208DB8730035982F /* EKImageView.bundle in Resources */,
+				FD7424B3208DB91D0035982F /* select_yes.png in Resources */,
 				FD75558C2085CF3D00AFD90C /* LaunchScreen.storyboard in Resources */,
-				FD7424922089D8400035982F /* select_yes.png in Resources */,
 				FD7555892085CF3D00AFD90C /* Assets.xcassets in Resources */,
-				FD74248F2089D8400035982F /* rightCell.png in Resources */,
-				FD7424912089D8400035982F /* no_data.png in Resources */,
+				FD7424AE208DB91D0035982F /* select_no.png in Resources */,
+				FD7424B5208DB91D0035982F /* no_data.png in Resources */,
+				FD7424B4208DB91D0035982F /* add_camera@3x.png in Resources */,
 				FD7555872085CF3C00AFD90C /* Main.storyboard in Resources */,
 				FD7556B32086F57700AFD90C /* 00.JPG in Resources */,
+				FD7424B0208DB91D0035982F /* nookDeleteBtn@2x.png in Resources */,
 				FD7556B22086F57700AFD90C /* 01.JPG in Resources */,
+				FD7424B1208DB91D0035982F /* nookDeleteBtn@3x.png in Resources */,
+				FD7424B2208DB91D0035982F /* nookDeleteBtn.png in Resources */,
+				FD7424AF208DB91D0035982F /* rightCell.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,10 +307,12 @@
 			files = (
 				FD7424892089CFED0035982F /* EKPhotoController.m in Sources */,
 				FD7556C120871FB700AFD90C /* EKAssetCell.m in Sources */,
+				FD7424A0208DB2DC0035982F /* EKCollectionViewCell.m in Sources */,
 				FD7556AC2086EB3900AFD90C /* EKPhotoPreviewController.m in Sources */,
 				FD7556BE2087196200AFD90C /* EKPhotoPickerController.m in Sources */,
 				FD7556AF2086EF2700AFD90C /* EKPhotoPreviewCell.m in Sources */,
 				FD7555842085CF3C00AFD90C /* ViewController.m in Sources */,
+				FD74249D208D91510035982F /* EKImageView.m in Sources */,
 				FD75558F2085CF3D00AFD90C /* main.m in Sources */,
 				FD74249A2089F28C0035982F /* EKAsset.m in Sources */,
 				FD74247F2089C1A40035982F /* EKPhotoListCell.m in Sources */,

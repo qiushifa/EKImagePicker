@@ -45,27 +45,15 @@
 -(void)showController:(UIViewController *)controller result:(EKPhotoResult)result {
     //授权完成，打开相册
     
-//    //Block传值
     self.listVC.photoResult = result;
-//    //先向presentViewController控制器XFPhotoListViewController，此控制器为全部相册控制器
-//    /* * *   同时设定最多选择照片的张数  * * */
-////    self.listVC.selectNum = _selectPhotoOfMax;
     [self showPhotoList:controller];
     
-    
-    //Block传值
-//    self.pickerVC.PhotoResult = result;
-    /* * *   同时设定最多选择照片的张数  * * */
+
+    self.pickerVC.selectedPhotos = result;
     self.pickerVC.maxCount = _selectPhotoOfMax;
-    /* * *   同时设定返回图片的类型  * * */
-//    self.photoPickerController.imageType = _imageType;
-    
-    //然后再执行pushViewController控制器XFPhotoPickerViewController
-    //此控制器为详情相册，显示某个相册中的详细照片
     [self showPhotoPicker:self.listVC.navigationController];
 }
--(void)showPhotoList:(UIViewController *)controller
-{
+-(void)showPhotoList:(UIViewController *)controller {
     [controller presentViewController:self.naviVC animated:YES completion:nil];
 }
 
