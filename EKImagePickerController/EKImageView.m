@@ -13,6 +13,7 @@
 #import <Photos/Photos.h>
 #import "EKImageManager.h"
 #import "EKPhotoPreviewController.h"
+#import "EKPhotoPickerController.h"
 @interface EKImageView ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
 
@@ -107,8 +108,9 @@
     if (self.maxPhotosCount <= 0) {
         return;
     }
+    
     EKPhotoController *cont = [EKPhotoController new];
-    cont.selectPhotoOfMax = 5;
+    cont.selectPhotoOfMax = self.maxPhotosCount;
     [cont showIn:self.navcDelegate result:^(id responseObject) {
         NSMutableArray *temp = [@[] mutableCopy];
         for (PHAsset *asset in responseObject) {
@@ -116,7 +118,12 @@
                 [temp addObject:image];
             }];
         }
-        self.selectedPhotosBlock(temp);
+        if (self.selectedPhotosBlock) {
+            self.selectedPhotosBlock(temp);
+        }
+
+        self.allPhotos = temp;
+        [self.collectionView reloadData];
     }];
     
     
@@ -125,17 +132,19 @@
 #pragma mark - DeleteBtn
 - (void)deleteBtnClik:(UIButton *)sender {
     [_allPhotos removeObjectAtIndex:sender.tag];
-    if(_allPhotos.count == _maxPhotosCount - 1){
-        [_collectionView reloadData];
-    }else{
-        __weak typeof(self)weakSelf = self;
-        [_collectionView performBatchUpdates:^{
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:sender.tag inSection:0];
-            [weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
-        } completion:^(BOOL finished) {
-            [weakSelf.collectionView reloadData];
-        }];
-    }
+    [_collectionView reloadData];
+    
+//    if(_allPhotos.count == _maxPhotosCount - 1){
+//        [_collectionView reloadData];
+//    }else{
+//        __weak typeof(self)weakSelf = self;
+//        [_collectionView performBatchUpdates:^{
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:sender.tag inSection:0];
+//            [weakSelf.collectionView deleteItemsAtIndexPaths:@[indexPath]];
+//        } completion:^(BOOL finished) {
+//            [weakSelf.collectionView reloadData];
+//        }];
+//    }
 }
 
 /*

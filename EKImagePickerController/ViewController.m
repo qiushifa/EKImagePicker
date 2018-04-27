@@ -30,11 +30,10 @@
     EKImageView *view = [[EKImageView alloc] initWithFrame:CGRectMake(0, 200, [UIScreen mainScreen].bounds.size.width, 200) withPhotos:arr];
     view.maxPhotosCount = 2;
     view.navcDelegate = self;
-    __weak typeof(view)weakView = view;
-    view.selectedPhotosBlock = ^(NSArray *photos) {
-        weakView.allPhotos = [photos mutableCopy];
-//        [weakView.collectionView reloadData];
-    };
+//    __weak typeof(view)weakView = view;
+//    view.selectedPhotosBlock = ^(NSArray *photos) {
+//        weakView.allPhotos = [photos mutableCopy];
+//    };
     [self.view addSubview:view];
     
     // Do any additional setup after loading the view, typically from a nib.
